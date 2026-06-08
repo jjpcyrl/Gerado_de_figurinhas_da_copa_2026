@@ -1,0 +1,344 @@
+/* ==========================================================================
+   VARIÁVEIS DE CORES E PALETA DA SELEÇÃO
+   ========================================================================== */
+:root {
+    --color-bg-main: #0a1f1d;
+    --color-bg-panel: #113430;
+    --color-border-accent: #f1c40f;
+    --color-brazil-green: #008751;
+    --color-brazil-yellow: #ffdf00;
+    --color-brazil-blue: #002776;
+    --color-text-light: #ffffff;
+    --color-text-muted: #a2c4c1;
+    --color-card-bg: #16433e;
+    --font-main: 'Montserrat', sans-serif;
+    --font-sports: 'Teko', sans-serif;
+    --radius-lg: 16px;
+    --radius-md: 8px;
+    --transition-fast: 0.25s ease;
+}
+ 
+/* ==========================================================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ 
+body {
+    font-family: var(--font-main);
+    background: radial-gradient(circle at center, #143d38 0%, var(--color-bg-main) 100%);
+    color: var(--color-text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+ 
+/* ==========================================================================
+   HEADER E FOOTER
+   ========================================================================== */
+.main-header {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+}
+ 
+.main-header h1 {
+    font-family: var(--font-sports);
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--color-brazil-yellow) 0%, #fff 50%, var(--color-brazil-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+ 
+.main-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+ 
+.main-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+ 
+/* ==========================================================================
+   LAYOUT PRINCIPAL (RESPONSIVO E FLEXÍVEL)
+   ========================================================================== */
+.app-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+ 
+@media (min-width: 992px) {
+    .app-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+ 
+/* ==========================================================================
+   PAINEL DE CONTROLE (FORMULÁRIO)
+   ========================================================================== */
+.control-panel {
+    width: 100%;
+}
+ 
+.panel-card {
+    background-color: var(--color-bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+ 
+.panel-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-brazil-green);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+ 
+.input-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+ 
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+}
+ 
+.input-group input[type="text"],
+.input-group select {
+    background-color: var(--color-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    color: var(--color-text-light);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    transition: var(--transition-fast);
+}
+ 
+.input-group input[type="text"]:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--color-brazil-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 223, 0, 0.2);
+}
+ 
+.input-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: right;
+}
+ 
+/* Drag and Drop Zone */
+.drop-zone {
+    border: 2px dashed rgba(255, 223, 0, 0.4);
+    border-radius: var(--radius-md);
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: var(--color-card-bg);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+ 
+.drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--color-brazil-yellow);
+    background-color: rgba(255, 223, 0, 0.05);
+}
+ 
+.drop-zone-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+ 
+.upload-icon {
+    font-size: 2.5rem;
+}
+ 
+.drop-zone-prompt p {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+ 
+.btn-secondary {
+    background-color: rgba(255,255,255,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    transition: var(--transition-fast);
+}
+ 
+/* Painel de Ajustes */
+.adjustments-group {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--color-brazil-yellow);
+    transition: opacity var(--transition-fast);
+}
+ 
+.adjustments-group h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    color: var(--color-brazil-yellow);
+}
+ 
+.slider-control {
+    margin-bottom: 1rem;
+}
+ 
+.slider-control:last-child {
+    margin-bottom: 0;
+}
+ 
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-text-muted);
+}
+ 
+.slider-control input[type="range"] {
+    width: 100%;
+    accent-color: var(--color-brazil-yellow);
+    cursor: pointer;
+}
+ 
+.id-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+ 
+/* Botão Principal */
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--color-brazil-yellow) 0%, #f1c40f 100%);
+    color: var(--color-brazil-blue);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(241, 196, 15, 0.3);
+    transition: all var(--transition-fast);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+ 
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(241, 196, 15, 0.5);
+    filter: brightness(1.1);
+}
+ 
+.btn-primary:active {
+    transform: translateY(1px);
+}
+ 
+/* Spinner Loader */
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 39, 118, 0.2);
+    border-top: 3px solid var(--color-brazil-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    position: absolute;
+}
+ 
+.hidden {
+    display: none !important;
+}
+ 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+ 
+/* ==========================================================================
+   PAINEL DE PREVIEW (CANVAS RESPONSIVO)
+   ========================================================================== */
+.preview-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+ 
+.preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 420px;
+}
+ 
+.sticker-preview-container {
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+ 
+#sticker-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+ 
+.preview-tip {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+}

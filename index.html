@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Figurinhas - Copa 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,400&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
+</head>
+<body>
+    <header class="main-header">
+        <h1>GERADOR DE FIGURINHAS</h1>
+        <h2>COPA DO MUNDO 2026</h2>
+    </header>
+ 
+    <main class="app-container">
+        <section class="control-panel">
+            <div class="panel-card">
+                <h3><span class="icon">⚙️</span> Personalize seu Cromo</h3>
+                <form id="sticker-form" onsubmit="event.preventDefault();">
+                    <div class="input-group">
+                        <label for="player-name">Nome do Jogador</label>
+                        <input type="text" id="player-name" maxlength="18" placeholder="Ex: joão" autocomplete="off">
+                        <span class="input-hint">Máximo de 18 caracteres</span>
+                    </div>
+ 
+                    <div class="input-group">
+                        <label for="player-position">Posição</label>
+                        <select id="player-position">
+                            <option value="TECNICO">Tecnico</option>
+                            <option value="GOLEIRO">Goleiro</option>
+                            <option value="ZAGUEIRO">Zagueiro</option>
+                            <option value="LATERAL DIREITO">Lateral direito </option>
+                            <option value="LATERAL ESQUERDO">Lateral esquerdo</option>
+                            <option value="MEIA DE LIGAÇAO">Meia de Ligaçao </option>
+                            <option value="CENTRO AVANTE">Centro Avante</option>
+                            <option value="SEGUNDO ATACANTE">Segundo Atacante</option>
+                            <option value="PONTA DIREITA">Ponta Direita</option>
+                            <option value="PONTA ESQUERDA">Ponta Esquerda</option>
+                            <option value="VOLANTE" selected>volante</option>
+
+                            <option value="ATACANTE">Atacante</option>
+                        </select>
+                    </div>
+ 
+                    <div class="input-group">
+                        <label>Foto do Jogador</label>
+                        <div id="drop-zone" class="drop-zone">
+                            <input type="file" id="file-input" accept="image/*" hidden>
+                            <div class="drop-zone-prompt">
+                                <span class="upload-icon">📸</span>
+                                <p>Arrastar e soltar sua foto aqui</p>
+                                <span class="btn-secondary">Selecionar Arquivo</span>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="adjustments-group id-disabled" id="adjustments-panel">
+                        <h4>Ajustes de Posição da Foto</h4>
+                        <div class="slider-control">
+                            <div class="slider-labels"><label for="zoom-slider">Zoom</label><span id="zoom-val">100%</span></div>
+                            <input type="range" id="zoom-slider" min="10" max="300" value="100" disabled>
+                        </div>
+                        <div class="slider-control">
+                            <div class="slider-labels"><label for="x-slider">Posição Horizontal (X)</label><span id="x-val">0</span></div>
+                            <input type="range" id="x-slider" min="-200" max="200" value="0" disabled>
+                        </div>
+                        <div class="slider-control">
+                            <div class="slider-labels"><label for="y-slider">Posição Vertical (Y)</label><span id="y-val">0</span></div>
+                            <input type="range" id="y-slider" min="-200" max="200" value="0" disabled>
+                        </div>
+                    </div>
+ 
+                    <button type="button" id="btn-download" class="btn-primary">
+                        <span class="btn-text">GERAR E BAIXAR FIGURINHA</span>
+                        <div class="spinner hidden" id="btn-spinner"></div>
+                    </button>
+                </form>
+            </div>
+        </section>
+ 
+        <section class="preview-panel">
+            <div class="preview-wrapper">
+                <div class="sticker-preview-container">
+                    <canvas id="sticker-canvas" width="800" height="1100"></canvas>
+                </div>
+                <p class="preview-tip">✨ Preview em tempo real. Ajuste os campos à esquerda para atualizar.</p>
+            </div>
+        </section>
+    </main>
+ 
+    <footer class="main-footer">
+        <p>&copy; 2026 Gerador de Figurinhas de Futebol. Turma de Desenvolvimento de Sistemas.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
